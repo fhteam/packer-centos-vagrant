@@ -9,11 +9,8 @@ nginx_pkg:
     file.directory:
         - clean: True
 nginx_service:
-  service.running:
-    - name: nginx
-    - enable: True
-    - watch:
-        - file: /etc/nginx/nginx.conf
+    service.enabled:
+        - name: nginx
 
 /etc/nginx/nginx.conf:
   file.managed:

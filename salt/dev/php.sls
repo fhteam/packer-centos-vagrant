@@ -17,8 +17,9 @@ composer_install:
         - user: vagrant
         - group: vagrant
 
-#/etc/php-fpm.d/www.conf:
-#    file.absent
+/etc/php-fpm.conf:
+    file.managed:
+        - source: salt://templates/etc/php-fpm.conf
 
 /etc/php.d/15-xdebug.ini:
     file.managed:
@@ -33,8 +34,4 @@ composer_install:
         - group: vagrant
 
 php-fpm:
-    service.running:
-        - enable: True
-        - watch:
-            - file: /etc/php.ini
-            - file: /etc/php.d/15-xdebug.ini
+    service.enabled
