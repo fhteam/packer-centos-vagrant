@@ -1,0 +1,12 @@
+include:
+    - dev.ntp
+    - dev.pkgs
+    - dev.repo
+    - dev.nginx
+    - dev.php
+    - dev.redis
+    - dev.postgres
+    - dev.nodejs
+    - dev.rabbitmq
+    - dev.sphinx
+    - dev.mysql

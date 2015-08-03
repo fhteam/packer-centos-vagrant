@@ -1,0 +1,53 @@
+{
+  "builders": [
+    {
+      "vm_name": "centos-7.1-x86_64-minimal",
+      "guest_os_type": "RedHat_64",
+      "iso_checksum_type": "md5",
+      "iso_checksum": "111379a06402e1e445c6aeee9401d031",
+      "iso_url": "http://mirror.yandex.ru/centos/7.1.1503/isos/x86_64/CentOS-7-x86_64-NetInstall-1503.iso",
+      "type": "virtualbox-iso",
+      "headless": true,
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "50000s",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "4096"],
+        ["modifyvm", "{{.Name}}", "--cpus", "4"]
+      ],
+      "http_directory": ".",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
+      ],
+      "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "vagrant.sh",
+        "virtualbox.sh"
+      ],
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": "salt"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "cleanup.sh"
+      ],
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": 9,
+      "output": "centos-7.1-x86_64-minimal.box"
+    }
+  ]
+}
