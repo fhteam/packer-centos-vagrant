@@ -1,4 +1,4 @@
-{% set php_pkgs=['fpm', 'cli', 'gd', 'devel', 'mbstring', 'mcrypt', 'opcache', 'pdo', 'pgsql', 'pecl-xdebug', 'intl', 'pecl-gmagick', 'pecl-zmq'] %}
+{% set php_pkgs=['fpm', 'bcmath', 'cli', 'gd', 'devel', 'mbstring', 'mcrypt', 'opcache', 'pdo', 'pgsql', 'pecl-xdebug', 'intl', 'pecl-gmagick', 'pecl-zmq'] %}
 
 php_pkg:
     pkg.installed:
