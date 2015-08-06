@@ -10,3 +10,4 @@ include:
     - dev.rabbitmq
     - dev.sphinx
     - dev.mysql
+    - dev.zeromq
