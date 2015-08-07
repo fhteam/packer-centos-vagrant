@@ -47,7 +47,7 @@
     {
       "type": "vagrant",
       "compression_level": 9,
-      "output": "centos-7.1-x86_64-minimal.box"
+      "output": "centos-7.1-x86_64-fhpack.box"
     }
   ]
 }
