@@ -1,4 +1,5 @@
 include:
+    - dev.hosts
     - dev.ntp
     - dev.pkgs
     - dev.repo
